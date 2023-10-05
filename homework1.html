@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="homework1.css">
+  </head>
+  <body>
+    <form method="post" action="#" enctype="multipart/form-data">
+      <table>
+        <tr>
+            <td>
+                <span class="front">&nbsp;欢迎注册会员</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                手机号码:
+            </td>
+            <td>
+                <input type="text" name="phonenum" placeholder="11位手机号" />
+                <span class="must">必填</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                创建密码:
+            </td>
+            <td>
+                <input type="text" name="password" placeholder="8位密码" />
+                <span class="must">必填</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                注册邮箱:
+            </td>
+            <td>
+                <input type="text" name="email" placeholder="例如:wustzz@sina.com" />
+                <span class="must">必填</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                验证码:
+            </td>
+            <td>
+                <input type="text" name="verify" />
+                <span id="verify" style="background-color: gray;"></span>
+                <span><a href="javascript:reflesh();">看不清楚换一张</a></span>
+                <!-- 调用js函数实现验证码更换 -->
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                性别:
+            </td>
+            <td>
+                <label>
+                    <input type="radio" name="sex" value="male" />
+                    男
+                </label>
+                <label>
+                    <input type="radio" name="sex" value="female" />
+                    女
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                生日:
+            </td>
+            <td>
+                <input type="date" name="birth" />
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                年龄:
+            </td>
+            <td>
+                <input type="number" name="age" />
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                籍贯:
+            </td>
+            <td>
+                <select name="state">
+                    <option value="0">湖北省</option>
+                    <option value="1">湖南省</option>
+                    <option value="2">山东省</option>
+                </select>
+                <select name="city">
+                    <option value="0">武汉市</option>
+                    <option value="1">十堰市</option>
+                    <option value="2">黄冈市</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                个人学历:
+            </td>
+            <td>
+                <select name="study">
+                    <option value="0">本科及以下</option>
+                    <option value="1">本科</option>
+                    <option value="2">硕士</option>
+                    <option value="3">博士</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                月薪:
+            </td>
+            <td>
+                <input type="range" name="slary" id="slary" min="0" max="10000" step="100"/>
+                <span id="msg"></span>
+                <!-- 调用js函数实现显示滑块值 -->
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                个人爱好:
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="like" value="singing" />
+                    唱歌
+                </label>
+                <label>
+                    <input type="checkbox" name="like" value="running" />
+                    跑步
+                </label>
+                <label>
+                    <input type="checkbox" name="like" value="swimming" />
+                    游泳
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                个人照片:
+            </td>
+            <td>
+                <input type="file" id="test-image-file" name="test" />
+                <div
+                id="test-image-preview"
+                style="
+                border: 1px solid silver;
+                width: 200px;
+                height: 200px;
+                background-repeat: no-repeat;
+                background-position: center;
+                "
+                ></div>
+                <!-- 调用js函数实现照片预览 -->
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+                个人简介:
+            </td>
+            <td>
+                <textarea name="intro" cols="28" rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="head">
+            </td>
+            <td>
+                <input type="submit" value="提交" />
+                <input type="reset" value="重填" />
+            </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+  <script>
+    /js函数实现显示滑块值/ 
+    var msg = document.getElementById("msg");
+    window.onload = function () {
+      msg.innerHTML = document.getElementById("slary").value;
+    };
+    document.getElementById("slary").onchange = function () {
+      msg.innerHTML = this.value;
+    };
+    /js函数实现验证码更换/ 
+    const yzm = document.getElementById('verify')
+        reflesh();
+        function reflesh(){
+          yzm.innerHTML = getcode();
+          
+        }
+        function getcode(){
+          const arr = ['a','b','c','d','e','f','g','h','i','j'
+                      ,'k','l','m','n','o','p','q','r','s','t'
+                      ,'u','v','w','x','y','z']
+          let codestr = ''
+          for(let i = 0; i < 4; i++){
+            let index = parseInt(Math.random()*arr.length);
+            codestr += arr[index];
+          }
+          return codestr;
+        }
+  </script>
+  <script>
+    /js函数实现照片预览/ 
+    var fileInput = document.getElementById("test-image-file");
+    var preview = document.getElementById("test-image-preview");
+    fileInput.addEventListener("change", function () {
+      // 监听change事件
+      preview.style.backgroundImage = ""; // 清除背景图片
+      if (!fileInput.value) {
+        info.innerHTML = "没有选择文件";
+        return;
+      }
+      var file = fileInput.files[0]; // 获取File引用
+      // 获取File信息:
+      if (
+        file.type !== "image/jpeg" &&
+        file.type !== "image/png" &&
+        file.type !== "image/gif"
+      ) {
+        alert("不是有效的图片文件!");
+        return;
+      }
+      var reader = new FileReader(); // 读取文件
+      reader.onload = function (e) {
+        // 发起一个异步操作来读取文件内容
+        var data = e.target.result; // data串形如： 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+        preview.style.backgroundImage = "url(" + data + ")";
+      };
+      reader.readAsDataURL(file); // 以DataURL的形式读取文件
+    });
+  </script>
+</html>

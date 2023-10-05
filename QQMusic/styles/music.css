@@ -1,0 +1,241 @@
+:root {
+  --primary-color: #31c27c;
+  /* 设置自定义变量颜色 */
+}
+/*  伪类选择器/根选择器 */
+body {
+  margin: 0;
+  /* 设置外边距为0 */
+  background: #f5f5f5;
+  /* 设置背景颜色 */
+  font-family: Microsoft Yahei;
+  /* 设置字体 */
+  font-size: 14px;
+  /* 设置文字大小 */
+  /* min-width: 1000px; */
+}
+/* 元素选择器 */
+a {
+  text-decoration: none;
+  /* 设置文字修饰为无 */
+  color: #000;
+  /* 设置文字颜色 */
+}
+/* 元素选择器 */
+header {
+  height: 90px;
+  /*  */
+  background: white;
+  /* 设置背景颜色 */
+  display: flex;
+  /* 设置使用flex布局 */
+  align-items: center;
+  /* 设置元素横轴居中 */
+}
+/* 元素选择器 */
+.header-inner, main {
+  /* width: 1200px; */
+  padding: 20px;
+  /* 设置内边距 */
+  margin: auto;
+  /* 设置外边距自动，使元素上下边距为0，左右边距居中 */
+}
+/* 类选择器  元素选择器 */
+.tag-list {
+  margin-top: 50px;
+  /* 设置上边距 */
+  margin-bottom: 15px;
+  /* 设置下边距 */
+}
+/* 类选择器 */
+.tag-item {
+  display: inline-block;
+  /* 设置为行内块元素 */
+  padding: 0 8px;
+  /* 设置上下内边距为0，左右内边距为0 */
+  margin-right: 24px;
+  /* 设置左边距 */
+  line-height: 26px;
+  /* 设置行高为26 */
+  color: #000;
+  /* 设置文字颜色 */
+  text-decoration: none;
+  /* 设置文字修饰为无 */
+}
+/* 类选择器 */
+.tag-active {
+  background: var(--primary-color);
+  /* 设置背景 */
+  color: white;
+  /* 设置字体颜色 */
+}
+/* 类选择器 */
+.tag-item:not(.tag-active):hover {
+  color: var(--primary-color);
+  /* 设置文字颜色 */
+}
+/* 伪类选择器/鼠标悬浮时显示 */
+.nowrap {
+  white-space: nowrap;
+  /* 设置不换行 */
+  overflow: hidden;
+  /* 设置超出部分隐藏 */
+  text-overflow: ellipsis;
+  /* 当文本隐藏时显示省略号 */
+}
+/* 类选择器 */
+.playlist {
+  display: grid;
+  /* 设置使用grid布局 */
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  /* 设置横向单元格自动填充，单元格大小为200px到1fr之间 */
+  gap: 45px 15px;
+  /* 设置行距为45px，列距为15px */
+  margin-bottom: 45px;
+  /* 设置下边距为45px */
+}
+/* 类选择器 */
+.cover-wrap {
+  display: flex;
+  /* 设置使用flex布局 */
+  position: relative;
+  /* 设置使用相对定位 */
+  overflow: hidden;
+  /* 设置超出部分隐藏 */
+  width: 100%;
+  /* 设置宽度为父元素宽度 */
+  margin-bottom: 15px;
+  /* 设置下边距为15px */
+  align-items: center;
+  /* 设置元素横轴居中 */
+  justify-content: center;
+  /* 设置主轴方向居中对齐 */
+  cursor: pointer;
+  /* 设置光标为指示链接的指针 */
+}
+/* 类选择器 */
+.cover-img {
+  width: 100%;
+  /* 设置宽度为父元素宽度 */
+  transition: all 0.75s;
+  /* 设置所有属性变化过渡，时间为0.75s */
+}
+/* 类选择器 */
+.cover-mask {
+  position: absolute;
+  /* 设置使用绝对定位 */
+  left: 0;
+  /* 设置与父元素左边框距离为0 */
+  top: 0;
+  /* 设置与父元素上边框距离为0 */
+  right: 0;
+  /* 设置与父元素右边框距离为0 */
+  bottom: 0;
+  /* 设置与父元素下边框距离为0 */
+  background: #000;
+  /* 设置背景 */
+  opacity: 0;
+  /* 设置元素完全透明 */
+  transition: all 0.5s;
+  /* 设置所有属性变化过渡，时间为0.5s */
+}
+/* 类选择器 */
+.cover-play {
+  position: absolute;
+  /* 设置使用绝对定位 */
+  left: 50%;
+  /* 设置与父元素左边框距离为父元素宽度百分之五十 */
+  top: 50%;
+  /* 设置与父元素上边框距离为父元素高度百分之五十 */
+  margin-left: -35px;
+  /* 设置左外边距 */
+  margin-top: -35px;
+  /* 设置上外边距 */
+  opacity: 0;
+  /* 设置元素完全透明 */
+  transform: scale(0.7);
+  /* 设置元素缩放为0.7 */
+  transition: all 0.5s;
+  /* 设置所有属性变化过渡，时间为0.5s */
+}
+.cover-wrap:hover .cover-mask {
+  opacity: 0.2;
+  /* 设置不透明度为0.2 */
+}
+/* 伪类的后代类选择器 */
+.cover-wrap:hover .cover-play {
+  opacity: 1;
+  /* 设置不透明度为1 */
+  transform: scale(1);
+  /* 设置缩放为1 */
+}
+/* 伪类的后代类选择器 */
+.cover-wrap:hover .cover-img {
+  transform: scale(1.07);
+  /* 设置缩放为1.07倍 */
+}
+/* 伪类的后代类选择器 */
+.album-title:hover {
+  color: var(--primary-color);
+  /* 设置字体颜色 */
+}
+/* 伪类选择器 */
+.album-author {
+  color: #999;
+  /* 设置字体颜色 */
+  line-height: 1.6;
+  /* 设置行高为字体大小1.6倍 */
+}
+/* 类选择器 */
+.album-author:hover {
+  color: var(--primary-color);
+  /* 设置字体颜色 */
+}
+/* 伪类选择器 */
+.album-time {
+  color: #999;
+  /* 设置字体颜色 */
+}
+/* 类选择器 */
+.page {
+  display: flex;
+  /* 设置使用flex布局 */
+  align-items: center;
+  /* 设置横向居中对齐 */
+  justify-content: center;
+  /* 设置主轴方向居中对齐 */
+}
+/* 类选择器 */
+.page-item {
+  display: inline-block;
+  /* 设置为行内块级元素 */
+  color: #a2a2a2;
+  /* 设置字体颜色 */
+  line-height: 50px;
+  /* 设置行高 */
+  padding: 0 20px;
+  /* 设置上下内边距为0，左右内边距为20px */
+  margin: 10px;
+  /* 设置上下外边距为10px */
+  font-size: 16px;
+  /* 设置字体大小为16px */
+}
+/* 类选择器 */
+.page-current, .page-item:not(.page-more):hover {
+  background: var(--primary-color);
+  /* 设置背景 */
+  color: white;
+  /* 设置字体颜色 */
+}
+/* 类选择器 伪类选择器 */
+footer {
+  margin-top: 60px;
+  /* 设置上边距 */
+  background: #333;
+  /* 设置背景 */
+  height: 200px;
+  /* 设置高度 */
+}
+/* 元素选择器 */
+
+

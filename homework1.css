@@ -1,0 +1,13 @@
+table {
+    margin: 0 auto;
+}
+span.front{
+    color: blue;
+}
+td.head{
+    text-align: right;
+}
+/* 保持表格居中 */
+span.must{
+    color: red;
+}
